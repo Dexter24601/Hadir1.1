@@ -119,3 +119,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # X:\TU\Capstone project\Engine\Django\Project\Hadir\HadirApp\views.py
 # X:\TU\Capstone project\Engine\Django\Project\Hadir\Hadir\urls.py
+
+
+handler404 = 'HadirApp.views.handler404'

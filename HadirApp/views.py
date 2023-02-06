@@ -603,3 +603,7 @@ def traning(request):
 def PageNotFound(request):
 
     return render(request, 'HadirApp/404.html')
+
+
+def handler404(request, exception):
+    return render(request, 'HadirApp/404.html')
