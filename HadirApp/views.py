@@ -187,12 +187,12 @@ def student_enrollment(request, class_name, class_id):
 
                 # Detect Submitted Faces
                 ImgsNames = DetectFaces(ImgSize=(416, 416), ImagePath=ProcessingPath, ConfidenceThreshold=0.80,
-                                        std_id=student_id,  Save_noBG=True, Save_cropped=True, pad=0, gain=1.01)
+                                        std_id=student_id,  Save_noBG=True, Save_cropped=False, pad=30, gain=1)
 
                 # If we didn't detect any face -> try with less confidence
                 if len(ImgsNames) < 1:
                     ImgsNames = DetectFaces(ImgSize=(800, 800), ImagePath=ProcessingPath,
-                                            ConfidenceThreshold=0.8, std_id=student_id, Save_noBG=True, Save_cropped=True)
+                                            ConfidenceThreshold=0.8, std_id=student_id, Save_noBG=True, Save_cropped=False)
 
                 # if we got detection
                 if len(ImgsNames) >= 1:
@@ -396,7 +396,7 @@ def attendance(request, class_name, class_id):
                     n += 1
 
                 DetectFaces(ImgSize=(1024, 1024), ImagePath=FolderToSave, ConfidenceThreshold=0.8,
-                            Save=False,  Save_noBG=False, Save_cropped=True, pad=0, gain=1.01)
+                            Save=False,  Save_noBG=True, Save_cropped=False,  pad=30, gain=1)
 
                 print(
                     f'Type of Students {type(students)} and its values are {students}')
@@ -594,7 +594,7 @@ def traning(request):
 
         n = len(os.listdir(FolderToSave_Training))
         DetectionFilesName = DetectFaces(ImgSize=(96, 96), ImagePath=FolderToSave_Processing, ConfidenceThreshold=0.8,
-                                         MediaPath=FolderToSave_Training, std_id='99999999',  Save_noBG=False, Save_cropped=True, pad=0, gain=1.5)
+                                         MediaPath=FolderToSave_Training, std_id='99999999',  Save_noBG=False, Save_cropped=True, pad=30, gain=1)
 
         print('Traning set added succesfuly')
     return render(request, 'HadirApp/Traning.html')

@@ -2,7 +2,6 @@ import matplotlib
 import numpy as np
 import os
 import matplotlib.image as mpimg
-from scipy import misc
 from PIL import Image
 import matplotlib.pyplot as plt
 from HadirApp.models import Student
