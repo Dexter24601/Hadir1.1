@@ -5,8 +5,20 @@
 
 {% load static %}
 
+<style>
+    footer {
+        position: fixed;
+    }
+
+    #err {
+        display: flex;
+        margin: auto;
+    }
+</style>
 
 <h1 style="color: brown;">404 Page Not Found</h1>
+<img id='err' src="{% static 'Hadir/media/404.png' %}" alt="">
+
 
 
 {% endblock %}

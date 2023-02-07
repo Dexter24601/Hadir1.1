@@ -607,3 +607,7 @@ def PageNotFound(request):
 
 def handler404(request, exception):
     return render(request, 'HadirApp/404.html')
+
+
+def handler500(request):
+    return render(request, 'HadirApp/404.html')
