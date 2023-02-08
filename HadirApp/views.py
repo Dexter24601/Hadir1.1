@@ -436,9 +436,12 @@ def attendance(request, class_name, class_id):
 
                     if Date.objects.filter(date=today).exists():
                         DATE = Date.objects.get(date=today)
+                        DATE.save()
+
                         pass
                     else:
                         DATE = Date.objects.create(date=today)
+                        DATE.save()
 
                     if Absence.objects.filter(student=student, clas=currentClass).exists():
 
@@ -446,6 +449,7 @@ def attendance(request, class_name, class_id):
 
                             print(
                                 f"student {student} is already marked absent")
+                            pass
 
                         else:
                             absent = Absence.objects.get(
