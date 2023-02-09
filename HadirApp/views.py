@@ -108,7 +108,7 @@ def loginPage(request):  # redirect to the page user was on
                 # return render(request, 'HadirApp/MainPage.html', {'user': user})
                 return redirect('/Hadir/main')
             else:
-                Err = ('Username/Password is Invalid')
+                Err = (' The Password is Invalid')
                 return render(request, './HadirApp/login.html', {'Err': Err})
         else:
             return render(request, './HadirApp/login.html')
