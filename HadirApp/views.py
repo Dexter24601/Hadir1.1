@@ -444,7 +444,8 @@ def attendance(request, class_name, class_id):
                         DATE.save()
 
                     if Absence.objects.filter(student=student, clas=currentClass).exists():
-
+                        DATE = Date.objects.get(date=today)
+                        DATE.save()
                         if Absence.objects.filter(student=student, clas=currentClass, date=DATE).exists():
 
                             print(
@@ -487,18 +488,30 @@ def attendance(request, class_name, class_id):
                     student for student in students if student not in prestudents]
 
                 for student in abcentStudents:
+
+                    if Date.objects.filter(date=today).exists():
+                        DATE = Date.objects.get(date=today)
+                        DATE.save()
+
+                        pass
+                    else:
+                        DATE = Date.objects.create(date=today)
+                        DATE.save()
+
                     print(f" Student {student} is Abcent")
                     if Absence.objects.filter(student=student, clas=currentClass).exists():
                         absent = Absence.objects.get(
                             student=student, clas=currentClass)
                         print(absent.counter)
                         absent.counter = absent.counter + 1
+                        absent.date.add(DATE)
                         print(absent.counter)
                         absent.save()
                     else:
                         absent = Absence.objects.create(
                             student=student, clas=currentClass)
                         absent.counter = absent.counter + 1
+                        absent.date.add(DATE)
                         absent.save()
                 return redirect('./Results')
 

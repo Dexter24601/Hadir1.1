@@ -281,7 +281,7 @@ def Recognize_LDA(students):
     for i in range(x_range):
         for j in range(y_range):
             test_set[i][j] -= M[i]
-    debugMode = True
+    debugMode = False
     if debugMode:
         for i in range(0, test_set.shape[1]):
             plt.subplot(1, test_set.shape[1], i + 1)
