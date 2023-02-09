@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import RegisterForm
+from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, redirect
 from .models import Student, Class, Image, Attendance, Absence, Date, Traning
 
@@ -107,7 +108,7 @@ def loginPage(request):  # redirect to the page user was on
                 # return render(request, 'HadirApp/MainPage.html', {'user': user})
                 return redirect('/Hadir/main')
             else:
-                Err = ('Email/Password is Invalid')
+                Err = ('Username/Password is Invalid')
                 return render(request, './HadirApp/login.html', {'Err': Err})
         else:
             return render(request, './HadirApp/login.html')

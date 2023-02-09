@@ -100,6 +100,21 @@
 
     }
 
+    .absent .modal {
+        width: 300px;
+
+    }
+
+    .absent #close {
+        background: #2a8aca;
+
+    }
+
+    .absent #close:hover {
+        background: #1e7cbb;
+
+    }
+
     .modal {
         display: block;
         margin: auto;
@@ -124,6 +139,7 @@
     }
 
     #close {
+        display: block;
         border-radius: 0px;
         font-size: 15px;
         width: -webkit-fill-available;
@@ -194,7 +210,7 @@
         #profile h2 {
             color: #0e6de3;
             height: fit-content;
-            font-size: large;
+            font-size: 1rem;
             padding: 10px;
             white-space: nowrap;
 
@@ -278,7 +294,7 @@
     <div style="margin: auto;">
         <div class="modal">
 
-            <h1>Absent list</h1>
+            <h1>Absent dates</h1>
             <p style="margin-top: 40px; font-size: 18px; font-weight: 300; margin-bottom:40px ; color: #000; ">
                 {% if absence.date %}
                 {% for date in absence.date.all %}
