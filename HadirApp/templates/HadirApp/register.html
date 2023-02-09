@@ -20,6 +20,15 @@
         .nav-wrapper {
             min-height: 0;
         }
+
+        #err {
+            color: brown;
+            width: fit-content;
+            font-size: 0.7rem;
+            margin: 0;
+            padding: 0;
+            white-space: break-spaces;
+        }
     </style>
 </head>
 
@@ -60,7 +69,7 @@
 
                     {% if err %}
 
-                    <span style="color: brown;" id="emailError">{{ err }}</span>
+                    <span id="err" style="color: brown;" id="emailError">{{ err }}</span>
                     {% endif %}
 
 
@@ -78,7 +87,7 @@
 
                     {% if err2 %}
 
-                    <span style="color: brown; width: fit-content;" id="passError">{{ err2 }}</span>
+                    <span id="err" style="color: brown; width: fit-content;" id="passError">{{ err2 }}</span>
                     {% endif %}
 
                     <button id="subtn" type="submit" value="submit">Register</button>
