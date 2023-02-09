@@ -75,8 +75,10 @@
         background-color: transparent;
         padding: 10px;
         position: absolute;
-        bottom: 0;
-        right: 0;
+
+        bottom: -6px;
+        right: -4px;
+
     }
 
     #profile h4 {
@@ -85,7 +87,8 @@
         padding: 10px;
     }
 
-    .pup {
+    .pup,
+    .absent {
         width: 100%;
         display: none;
         position: absolute;
@@ -107,9 +110,11 @@
         border-radius: 0px;
     }
 
-    button {
+    #button {
         display: inline;
-        margin: 0;
+        margin: 0 5px;
+        padding: 7px 7px;
+        font-size: 0.9rem;
     }
 
 
@@ -129,6 +134,16 @@
     .modal a {
         text-decoration: none;
         width: 100%;
+    }
+
+
+    #content .data {
+        font-weight: 600;
+        color: rgb(29, 105, 182);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        text-align: start;
+        white-space: nowrap;
+        font-size: 14px;
     }
 
     #accept {
@@ -163,7 +178,7 @@
 
         #profile {
             width: 95vw;
-            height: 200px;
+            height: 240px;
             background: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -207,7 +222,7 @@
 
             <div class="head">
                 <h2>{{student.name}}</h2>
-                <h4>student id: {{student.student_id}}</h4>
+                <h4>student id: <span class="data">{{student.student_id}}</span></h4>
             </div>
 
             <h4>Registration date:
@@ -219,7 +234,11 @@
             <h4>Absence: <span class="data">{{absence.counter}}</span> </h4>
             {% endif %}
             <h4>Absence Persintage: <span class="data">{{persintage}}% </span></h4>
+            <h4>Dates of absence: <button id="button" onclick="absent()">
+                    <span> <i style="color: #fff; " class=" fa-regular fa-eye"></i></span></button>
+            </h4>
             <h4>Class: <a href="../{{class}}/Dashboard"> <span class="data">{{class}}</span></a></h4>
+
             <button onclick="pop()" id="delete" href=""><i class="fa-solid fa-trash"></i></button>
         </div>
     </div>
@@ -254,9 +273,48 @@
 
 
 
+<div class="absent">
+
+    <div style="margin: auto;">
+        <div class="modal">
+
+            <h1>Absent list</h1>
+            <p style="margin-top: 40px; font-size: 18px; font-weight: 300; margin-bottom:40px ; color: #000; ">
+                {% if absence.date %}
+                {% for date in absence.date.all %}
+            <p>{{date}}</p>
+            <br>
+            {%endfor%}
+            {%else%}
+
+            <p> this student has no absence record</p>
+            {% endif %}
+            </p>
+
+
+            <div class="bottons">
+
+                <button id="close" onclick="cancel()">OK</button>
+
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
 <script>
 
     const pup = document.querySelector(".pup");
+    const list = document.querySelector(".absent");
+
+    function absent() {
+        list.style.display = "flex";
+
+    }
 
     function pop() {
 
@@ -266,11 +324,17 @@
 
     function Delete() {
         pup.style.display = "none";
+        list.style.display = "none";
+
+
         console.log(`accepted`)
+
     }
 
     function cancel() {
         pup.style.display = "none";
+        list.style.display = "none";
+
         console.log(`closed`)
     }
 </script>
