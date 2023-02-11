@@ -85,7 +85,7 @@ class Date(models.Model):
 
 
 class Absence(models.Model):
-    student = models.ForeignKey(Student, null=True, on_delete=models.SET_NULL)
+    student = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
     clas = models.ForeignKey(Class, null=True, on_delete=models.SET_NULL)
     counter = models.IntegerField(default=0)
     date = models.ManyToManyField(Date)

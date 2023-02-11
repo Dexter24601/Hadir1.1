@@ -141,7 +141,7 @@ def DetectFaces(ImgSize=(256, 256), ImagePath='', Webcam=False, ConfidenceThresh
                     # this was the best
                     # CroppedImg = save_one_box(xyxy, DetectedImage,gain=1.12, pad=60, BGR=True, save=False)
                     CroppedImg = save_one_box(
-                        xyxy, DetectedImage, gain=gain, pad=pad, square=True, BGR=True, save=False)
+                        xyxy, DetectedImage, gain=gain, pad=pad, square=False, BGR=True, save=False)
                     CroppedImg = cv2.resize(CroppedImg, (height, width))
                     RGB = cv2.cvtColor(CroppedImg, cv2.COLOR_BGR2RGB)
 

@@ -187,8 +187,8 @@ def student_enrollment(request, class_name, class_id):
                 DeleteFolderIfExist(std_path)
 
                 # Detect Submitted Faces
-                ImgsNames = DetectFaces(ImgSize=(416, 416), ImagePath=ProcessingPath, ConfidenceThreshold=0.80,
-                                        std_id=student_id,  Save_noBG=True, Save_cropped=False, pad=30, gain=1)
+                ImgsNames = DetectFaces(ImgSize=(1024, 1024), ImagePath=ProcessingPath, ConfidenceThreshold=0.87,
+                                        std_id=student_id,  Save_noBG=True, Save_cropped=True, pad=30, gain=1.01)
 
                 # If we didn't detect any face -> try with less confidence
                 if len(ImgsNames) < 1:
@@ -207,7 +207,7 @@ def student_enrollment(request, class_name, class_id):
                     # Import to Database
                     for im in ImgsNames:
                         Image.objects.create(
-                            student=student, images=(f'Students/{im}'))
+                            student=student, images=(f'{im}'))
 
                     messages.success(
                         request, f'Student {name} has been added to {classes.class_name} class succesfuly')
@@ -397,7 +397,7 @@ def attendance(request, class_name, class_id):
                     n += 1
 
                 DetectFaces(ImgSize=(1024, 1024), ImagePath=FolderToSave, ConfidenceThreshold=0.8,
-                            Save=False,  Save_noBG=True, Save_cropped=False,  pad=30, gain=1)
+                            Save=False,  Save_noBG=False, Save_cropped=True,  pad=30, gain=1.01)
 
                 print(
                     f'Type of Students {type(students)} and its values are {students}')
