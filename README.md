@@ -18,3 +18,14 @@ To set up Hadir1.1 locally, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/Dexter24601/Hadir1.1.git
+2. Install the required Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+3. Start the Django development server:
+   ```bash
+   python manage.py runserver
+##Usage
+1. Create an Account: Instructors or organizers can create a new account on the platform.
+2. Create a Class/Event: Generate a QR code for attendees to scan and register by submitting their facial images.
+3. Take Attendance: Upload a photo of the attendees in the session, and the system will automatically detect and register their attendance.
+4. View Results: Instructors can view attendance data, including present and absent attendees, through the dashboard.
