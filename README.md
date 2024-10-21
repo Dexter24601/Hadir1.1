@@ -24,8 +24,15 @@ To set up Hadir1.1 locally, follow these steps:
 3. Start the Django development server:
    ```bash
    python manage.py runserver
-##Usage
+## Usage
 1. Create an Account: Instructors or organizers can create a new account on the platform.
 2. Create a Class/Event: Generate a QR code for attendees to scan and register by submitting their facial images.
 3. Take Attendance: Upload a photo of the attendees in the session, and the system will automatically detect and register their attendance.
 4. View Results: Instructors can view attendance data, including present and absent attendees, through the dashboard.
+
+## Technologies Used
+1. Python: Core language for back-end and face recognition processing.
+2. Django: Web framework for building the platform.
+3. OpenCV & YOLOv5: For face detection and recognition.
+4. SQLite: Local database for storing user and attendance data.
+
