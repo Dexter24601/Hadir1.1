@@ -36,3 +36,8 @@ To set up Hadir1.1 locally, follow these steps:
 3. OpenCV & YOLOv5: For face detection and recognition.
 4. SQLite: Local database for storing user and attendance data.
 
+## Result:
+![image](https://github.com/user-attachments/assets/5317e452-849f-4035-ad42-2b371f681c55)
+![image](https://github.com/user-attachments/assets/355e7bb0-08e5-432c-971d-53b67f1a30be)
+
+
